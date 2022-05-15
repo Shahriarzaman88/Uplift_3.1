@@ -8,6 +8,7 @@ using Uplift.DataAccess.Data.Repository.IRepository;
 
 namespace Uplift.DataAccess.Data.Repository
 {
+    //Section 5 Assignment-02 solution (Creating FrequencyRepository)
     public class Repository<T> : IRepository<T> where T : class
     {
 

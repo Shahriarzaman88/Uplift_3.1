@@ -22,7 +22,7 @@ namespace Uplift.DataAccess.Data.Repository
         public ICategoryRepository Category { get; private set; }
 
 
-        // Assignment-03 solution 
+        // Section 05 Assignment-03 solution 
         public IFrequencyRepository Frequency { get; private set; } 
 
         public void Dispose()

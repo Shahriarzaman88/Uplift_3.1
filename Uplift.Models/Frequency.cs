@@ -7,7 +7,7 @@ namespace Uplift.Models
 {
     public class Frequency
     {
-        // Assignment -01 Solution
+        // Section 5 Assignment -01 Solution
         //Creating Class for Models
 
         [Key]

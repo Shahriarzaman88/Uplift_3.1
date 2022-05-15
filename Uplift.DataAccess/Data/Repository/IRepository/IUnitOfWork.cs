@@ -8,7 +8,7 @@ namespace Uplift.DataAccess.Data.Repository.IRepository
     {
         ICategoryRepository Category { get; }
 
-        // Assignment-03 Solution 
+        // Section 05 Assignment-03 Solution 
         IFrequencyRepository Frequency { get; }
         void Save();
     }

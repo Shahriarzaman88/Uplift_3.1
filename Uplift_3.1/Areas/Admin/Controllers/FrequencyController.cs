@@ -9,6 +9,7 @@ using Uplift.Models;
 
 namespace Uplift.Areas.Admin.Controllers
 {
+    //Section 5 Assignment-04 solution (Creating FrequencyController
     [Area("Admin")]
     
     public class FrequencyController : Controller
