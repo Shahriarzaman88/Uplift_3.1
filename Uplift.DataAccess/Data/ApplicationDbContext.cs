@@ -18,5 +18,7 @@ namespace Uplift_3._1.DataAccess.Data
 
         //Assignment -01 Solution 
         public DbSet<Frequency> Frequency { get; set; }
+
+        public DbSet<Service> Service { get; set; }
     }
 }

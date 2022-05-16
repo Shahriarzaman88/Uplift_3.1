@@ -18,12 +18,18 @@ namespace Uplift.DataAccess.Data.Repository
 
             Frequency = new FrequencyRepository(_db);
 
+            Service = new ServiceRepository(_db);
+
         }
         public ICategoryRepository Category { get; private set; }
 
 
         // Section 05 Assignment-03 solution 
         public IFrequencyRepository Frequency { get; private set; } 
+
+        public IServiceRepository Service { get; private set; }
+
+
 
         public void Dispose()
         {
