@@ -8,18 +8,16 @@ using Uplift.DataAccess.Data.Repository.IRepository;
 
 namespace Uplift.DataAccess.Data.Repository
 {
-    //Section 5 Assignment-02 solution (Creating FrequencyRepository)
     public class Repository<T> : IRepository<T> where T : class
     {
-
         protected readonly DbContext Context;
         internal DbSet<T> dbSet;
+
         public Repository(DbContext context)
         {
             Context = context;
             this.dbSet = context.Set<T>();
         }
-
 
         public void Add(T entity)
         {
@@ -31,23 +29,47 @@ namespace Uplift.DataAccess.Data.Repository
             return dbSet.Find(id);
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IQueryable<T>> orderBy = null, string IncludeProperties = null)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
         {
             IQueryable<T> query = dbSet;
+
             if (filter != null)
             {
                 query = query.Where(filter);
             }
-
-            //include properties will be comma separated 
-
-            if (IncludeProperties != null)
+            //include properties will be comma seperated
+            if (includeProperties != null)
             {
-                foreach (var includeProperty in IncludeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-                    {
-                    query = query.Where(filter);
+                foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
                 }
             }
+
+            if (orderBy != null)
+            {
+                return orderBy(query).ToList();
+            }
+            return query.ToList();
+        }
+
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IQueryable<T>> orderBy = null, string IncludeProperties = null, string includeProperties = null)
+        {
+            IQueryable<T> query = dbSet;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+            //include properties will be comma seperated
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+
             if (orderBy != null)
             {
                 return orderBy(query).ToList();
@@ -58,20 +80,20 @@ namespace Uplift.DataAccess.Data.Repository
         public T GetFirstOrDefault(Expression<Func<T, bool>> filter = null, string includeProperties = null)
         {
             IQueryable<T> query = dbSet;
+
             if (filter != null)
             {
                 query = query.Where(filter);
             }
-
-            //include properties will be comma separated 
-
+            //include properties will be comma seperated
             if (includeProperties != null)
             {
                 foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    query = query.Where(filter);
+                    query = query.Include(includeProperty);
                 }
             }
+
             return query.FirstOrDefault();
         }
 

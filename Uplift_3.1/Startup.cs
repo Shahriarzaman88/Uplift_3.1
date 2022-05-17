@@ -31,7 +31,9 @@ namespace Uplift_3._1
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                Configuration.GetConnectionString("DefaultConnection")));
+            //@"Server=DESKTOP-80938UL;Database=Uplift_3._1;Trusted_Connection=True;MultipleActiveResultSets=true"
+
             // Changed Default Identity user and added func AddDefault Token User   
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -39,6 +41,13 @@ namespace Uplift_3._1
             // .AddDefaultUI(UIFramework.Bootstrap4);
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilation();
             services.AddRazorPages();
@@ -60,6 +69,7 @@ namespace Uplift_3._1
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting(); 
 

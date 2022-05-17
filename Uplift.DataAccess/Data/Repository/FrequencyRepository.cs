@@ -10,7 +10,7 @@ using Uplift_3._1.DataAccess.Data;
 namespace Uplift.DataAccess.Data.Repository
 {
 
-    public class FrequencyRepository : Repository<Frequency> , IFrequencyRepository
+    public class FrequencyRepository : Repository<Frequency>, IFrequencyRepository
     {
         private readonly ApplicationDbContext _db;
 
@@ -19,8 +19,9 @@ namespace Uplift.DataAccess.Data.Repository
             _db = db;
         }
 
-        
-        public IEnumerable<SelectListItem> GetFrequencyListForDropdown()
+       
+
+        public IEnumerable<SelectListItem> GetFrequencyListForDropDown()
         {
             return _db.Frequency.Select(i => new SelectListItem()
             {
@@ -28,6 +29,7 @@ namespace Uplift.DataAccess.Data.Repository
                 Value = i.Id.ToString()
             });
         }
+
         public void Update(Frequency frequency)
         {
             var objFromDb = _db.Frequency.FirstOrDefault(s => s.Id == frequency.Id);

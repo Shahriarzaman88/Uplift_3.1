@@ -14,7 +14,8 @@ namespace Uplift.DataAccess.Data.Repository.IRepository
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IQueryable<T>> orderBy = null,
             string IncludeProperties = null
-            );
+,
+            string includeProperties = null);
 
         T GetFirstOrDefault(
             Expression<Func<T, bool>> filter = null,
