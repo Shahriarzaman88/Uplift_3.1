@@ -14,7 +14,7 @@ namespace Uplift.DataAccess.Data.Repository
             _db = db;
             Category = new CategoryRepository(_db);
 
-         // Assignment-03 solution added Frequency variable 
+            // Assignment-03 solution added Frequency variable 
 
             Frequency = new FrequencyRepository(_db);
 
@@ -23,6 +23,8 @@ namespace Uplift.DataAccess.Data.Repository
             OrderHeader = new OrderHeaderRepository(_db);
 
             OrderDetails = new OrderDetailsRepository(_db);
+
+            User = new UserRepository(_db);
 
         }
         public ICategoryRepository Category { get; private set; }
@@ -36,6 +38,8 @@ namespace Uplift.DataAccess.Data.Repository
         public IOrderHeaderRepository OrderHeader { get; private set; }
 
         public IOrderDetailsRepository OrderDetails { get; private set; }
+
+        public IUserRepository User { get; private set; }
 
         public void Dispose()
         {

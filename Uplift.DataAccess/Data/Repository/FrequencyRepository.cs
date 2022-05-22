@@ -19,7 +19,7 @@ namespace Uplift.DataAccess.Data.Repository
             _db = db;
         }
 
-       
+
 
         public IEnumerable<SelectListItem> GetFrequencyListForDropDown()
         {
