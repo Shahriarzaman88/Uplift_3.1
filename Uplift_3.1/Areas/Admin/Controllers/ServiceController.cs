@@ -12,6 +12,7 @@ using Uplift.Models.ViewModels;
 namespace Uplift_3._1.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class ServiceController : Controller
     {
 

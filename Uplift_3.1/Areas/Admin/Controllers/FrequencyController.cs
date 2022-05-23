@@ -11,7 +11,7 @@ namespace Uplift.Areas.Admin.Controllers
 {
     //Section 5 Assignment-04 solution (Creating FrequencyController
     [Area("Admin")]
-
+    [Authorize]
     public class FrequencyController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

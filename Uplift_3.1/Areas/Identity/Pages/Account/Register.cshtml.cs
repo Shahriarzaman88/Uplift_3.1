@@ -18,7 +18,7 @@ using Microsoft.AspNetCore.WebUtilities;
 
 namespace Uplift_3._1.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
+    [Authorize]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;

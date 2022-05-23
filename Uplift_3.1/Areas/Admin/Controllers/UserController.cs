@@ -11,7 +11,7 @@ using Uplift.Utility;
 namespace Uplift.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = SD.Admin)]
+    [Authorize(Roles = SD.Admin)]
     public class UserController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
