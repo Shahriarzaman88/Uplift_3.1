@@ -5,11 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\Initializer\**" />
     <Compile Remove="Data\Migrations\**" />
-    <EmbeddedResource Remove="Data\Initializer\**" />
     <EmbeddedResource Remove="Data\Migrations\**" />
-    <None Remove="Data\Initializer\**" />
     <None Remove="Data\Migrations\**" />
   </ItemGroup>
 
